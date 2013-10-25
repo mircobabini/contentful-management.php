@@ -1,7 +1,7 @@
 <?php namespace ContentfulManagement; // just for ease
 
 // require the lib
-require_once dirname (__FILE__) . '/../contentful.php';
+require_once dirname (__FILE__) . '/../contentful-management.php';
 
 // demo token from the official docs
 $ACCESS_TOKEN = 'a1bef6fcaa2af5800f1e341fc9c6428e71e986ab0aeb8e862589f722f1759313';
@@ -28,7 +28,6 @@ ensure ($first_space_name == $space->name);
 // create a new one
 $space = $client->createSpace ('Space Jam');
 ensure (!!@$space->sys->type && $space->sys->type !== 'Error');
-fgets (fopen ("php://stdin", "r"));
 
 $space_name_rev = strrev ($space->name);
 $space_version = $space->sys->version;
@@ -38,7 +37,6 @@ $space_version = $space->sys->version;
 $space = $client->updateSpace ($space->sys->id, array ('name' => $space_name_rev), $space_version);
 ensure (!!@$space->sys->type && $space->sys->type !== 'Error', '', function () use ($space) { var_dump ($space); }, true);
 ensure ($space_name_rev == $space->name);
-fgets (fopen ("php://stdin", "r"));
 
 // delete it
 $space = $client->deleteSpace ($space->sys->id);

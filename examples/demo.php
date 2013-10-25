@@ -1,7 +1,7 @@
 <?php namespace ContentfulManagement; // just for ease
 
 // require the lib
-require_once dirname (__FILE__) . '/../contentful.php';
+require_once dirname (__FILE__) . '/../contentful-management.php';
 
 // demo token from the official docs
 $ACCESS_TOKEN = 'a1bef6fcaa2af5800f1e341fc9c6428e71e986ab0aeb8e862589f722f1759313';

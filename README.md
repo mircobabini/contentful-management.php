@@ -10,7 +10,7 @@ PHP client for [Contentful's](https://www.contentful.com) Content Management API
 <?php namespace ContentfulManagement; // just for ease
 
 // require the lib
-require_once dirname (__FILE__) . '/../contentful.php';
+require_once dirname (__FILE__) . '/../contentful-management.php';
 
 // get an access token: https://www.contentful.com/developers/documentation/content-management-api/#getting-started
 $ACCESS_TOKEN = 'ACCESS_TOKEN_HERE';

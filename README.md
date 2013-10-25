@@ -9,26 +9,29 @@ PHP client for [Contentful's](https://www.contentful.com) Content Management API
 ``` php
 <?php namespace ContentfulManagement; // just for ease
 
-// remove the ../ if you are out from the examples directory
-require_once '../contentful.php';
+// require the lib
+require_once dirname (__FILE__) . '/../contentful.php';
 
-// demo token from the official docs
-$ACCESS_TOKEN = 'b4c0n73n7fu1';
+// get an access token: https://www.contentful.com/developers/documentation/content-management-api/#getting-started
+$ACCESS_TOKEN = 'ACCESS_TOKEN_HERE';
 
 // instance the client
 $client = Client::get ($ACCESS_TOKEN);
 
-// use it for your needs
-$client->space ('cfexampleapi');
+// get the spaces
+$spaces = $client->getSpaces ();
 
-$client->contentTypes ('cfexampleapi');
-$client->contentType ('cat', 'cfexampleapi');
+// get the first one
+$space = $client->getSpace ($spaces->items[0]->sys->id);
 
-$client->entries ('cfexampleapi');
-$client->entry ('nyancat', 'cfexampleapi');
+// create a new one
+$space = $client->createSpace ('Space Jam');
 
-$client->assets ('cfexampleapi');
-$client->asset ('nyancat', 'cfexampleapi');
+// reverse its name and update
+$space = $client->updateSpace ($space->sys->id, strrev ($space->name), $space->sys->version);
+
+// delete it
+$space = $client->deleteSpace ($space->sys->id);
 ```
 
 ## License

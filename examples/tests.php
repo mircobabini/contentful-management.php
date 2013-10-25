@@ -35,7 +35,7 @@ $space_version = $space->sys->version;
 
 // reverse its name and update
 $space = $client->updateSpace ($space->sys->id, array ('name' => $space_name_rev), $space_version);
-ensure (!!@$space->sys->type && $space->sys->type !== 'Error', '', function () use ($space) { var_dump ($space); }, true);
+ensure (!!@$space->sys->type && $space->sys->type !== 'Error');
 ensure ($space_name_rev == $space->name);
 
 // delete it
